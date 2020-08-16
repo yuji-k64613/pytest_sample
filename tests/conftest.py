@@ -12,7 +12,8 @@ def my_session():
     prev = os.environ.get("PYENV_SHELL")
     os.environ["PYENV_SHELL"] = "sh"
     yield
-    os.environ["PYENV_SHELL"] = prev
+    if prev:
+        os.environ["PYENV_SHELL"] = prev
 
 
 @pytest.fixture
