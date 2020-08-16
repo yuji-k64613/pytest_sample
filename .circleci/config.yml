@@ -51,7 +51,6 @@ jobs: # A basic unit of work in a run
 
 orbs:
   slack: circleci/slack@3.4.2
-version: 2.1
 workflows:
   your-workflow:
     jobs:
