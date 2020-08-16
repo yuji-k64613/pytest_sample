@@ -42,3 +42,17 @@ jobs: # A basic unit of work in a run
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: test-results
           destination: tr1
+      - slack/notify:
+          channel: my-circleci
+          color: '#42e2f4'
+          mentions: 'yuji.k64613'
+          message: This is a custom message notification
+          webhook: webhook
+
+orbs:
+  slack: circleci/slack@3.4.2
+version: 2.1
+workflows:
+  your-workflow:
+    jobs:
+      - build
