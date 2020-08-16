@@ -44,6 +44,10 @@ jobs: # A basic unit of work in a run
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: test-results
           destination: tr1
-      - slack/approval-notification:
-          message: Pending approval
-          webhook: webhook
+    steps:
+      - run: exit 0
+      - slack/status:
+          fail_only: true
+          mentions: 'yuji.k64613'
+          only_for_branches: only_for_branches
+          webhook: '${SLACK_WEBHOOK}'
