@@ -1,6 +1,7 @@
 version: 2.1 # use CircleCI 2.0
 orbs:
   slack: circleci/slack@3.4.2
+  heroku: circleci/heroku@0.0.10
 jobs: # A basic unit of work in a run
   build: # runs not using Workflows must have a `build` job as entry point 
     # directory where steps are run
@@ -52,5 +53,6 @@ jobs: # A basic unit of work in a run
 workflows:
   build-and-notify:
     jobs:
+      - heroku/deploy-via-git
       - build
 
